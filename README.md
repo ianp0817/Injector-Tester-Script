@@ -1,7 +1,7 @@
 Simple Autoclicker for adding timing to FSAE Injector Testing Protocol
 
 # Controls
-Ctrl + shift + alt + (1, 2, 3, 4, 5, or 6): Clicks, waits, clicks again
+alt + (1, 2, 3, 4, 5, or 6): Clicks, waits, clicks again
 - 1: 10  seconds
 - 2: 20  seconds
 - 3: 30  seconds
