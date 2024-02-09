@@ -1,14 +1,29 @@
 ﻿#SingleInstance, Force
 
-; Define hotkeys for different pause durations with Ctrl+Shift+Alt
-!1::ClickAndWait(10000)   ; Ctrl+Shift+Alt+1 for 10 seconds
-!2::ClickAndWait(20000)   ; Ctrl+Shift+Alt+2 for 20 seconds
-!3::ClickAndWait(30000)   ; Ctrl+Shift+Alt+3 for 30 seconds
-!4::ClickAndWait(60000)   ; Ctrl+Shift+Alt+4 for 60 seconds
-!5::ClickAndWait(90000)   ; Ctrl+Shift+Alt+5 for 90 seconds
-!6::ClickAndWait(120000)  ; Ctrl+Shift+Alt+6 for 120 seconds
+; Define hotkeys for custom wait time with Alt+0
+!0::CustomWait()
+
+; Define hotkeys for different pause durations with Alt
+!1::ClickAndWait(10000)   ; Alt+1 for 10 seconds
+!2::ClickAndWait(20000)   ; Alt+2 for 20 seconds
+!3::ClickAndWait(30000)   ; Alt+3 for 30 seconds
+!4::ClickAndWait(60000)   ; Alt+4 for 60 seconds
+!5::ClickAndWait(90000)   ; Alt+5 for 90 seconds
+!6::ClickAndWait(120000)  ; Alt+6 for 120 seconds
 
 Esc::ExitApp
+
+CustomWait() {
+    InputBox, CustomDuration, Custom Wait Time, Enter the wait time (sec), , , 125
+    if ErrorLevel
+        return  ; Exit if the user cancels the input box
+    else if (CustomDuration = "") or (CustomDuration < 1) {
+        MsgBox, Invalid input. Please enter a valid wait time.
+        return  ; Exit if the input is invalid or empty
+    }
+    
+    ClickAndWait(CustomDuration * 1000)  ; Convert seconds to milliseconds
+}
 
 ClickAndWait(duration) {
     ; Click the mouse at the current cursor position
